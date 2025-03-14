@@ -5,8 +5,6 @@ from datetime import date
 class Director(BaseModel):
     director_id: Optional[int] = None
     name: str
-    birth_date: Optional[date] = None
-    nationality: Optional[str] = None
 
 class Movie(BaseModel):
     movie_id: Optional[int] = None
