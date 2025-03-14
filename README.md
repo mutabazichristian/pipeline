@@ -27,7 +27,7 @@ The system fetches the latest movie data, preprocesses it, and predicts whether 
   - `/movies/`  
   - `/directors/`  
   - `/genres/`
-- Deployed API on **Render** (`https://pipeline-databasedesign.onrender.com/`).  
+- Deployed API on **Render** [`https://pipeline-databasedesign.onrender.com/`](https://pipeline-databasedesign.onrender.com/).  
 - Input validation using **Pydantic**.
 
 ### Task 3 - Fetch, Predict & Log  
@@ -37,7 +37,7 @@ The system fetches the latest movie data, preprocesses it, and predicts whether 
 - Logged prediction results (via API endpoint or directly to MySQL).  
 - Error analysis with **classification reports** and **confusion matrix** visualizations.
 
-## 🗃️ Database Schema
+## Database Schema
 ### Tables
 - **Movies** (`movie_id`, `title`, `year`, `score`, `metascore`, `votes`, `director_id`, `runtime`, `revenue`, `description`)  
 - **Genres** (`genre_id`, `name`)  
@@ -68,14 +68,14 @@ The system fetches the latest movie data, preprocesses it, and predicts whether 
    ```
 
 5. **Test API Endpoints**  
-   - Access via Swagger UI: `http://127.0.0.1:8000/docs`  
-   - Deployed URL (Render): `https://pipeline-databasedesign.onrender.com`
+   - Access via Swagger UI: [`http://127.0.0.1:8000/docs`](http://127.0.0.1:8000/docs) 
+   - Deployed URL (Render): [`https://pipeline-databasedesign.onrender.com`](https://pipeline-databasedesign.onrender.com)
 
 ## ML Model (Movie Revenue Prediction)
 1. **Data Preprocessing**  
    - `movies.csv` cleaned (handled missing values).  
    - Features used: `Score`, `Metascore`, `Votes`, `Runtime`.  
-   - Target: `HighRevenue` (1 if Revenue > 100, else 0).
+   - Target: `high_revenue` (1 if Revenue > 100, else 0).
 
 2. **Model Training**  
    - RandomForestClassifier  
