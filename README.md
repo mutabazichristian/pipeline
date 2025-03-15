@@ -31,11 +31,12 @@ The system fetches the latest movie data, preprocesses it, and predicts whether 
 - Input validation using **Pydantic**.
 
 ### Task 3 - Fetch, Predict & Log  
-- Fetch **latest movie** via `/movies/` endpoint.  
-- Preprocess data (handle missing values, standardization).  
-- Trained **ML model** (`movie_model.pkl`) to predict **High** or **Low Revenue**.  
-- Logged prediction results (via API endpoint or directly to MySQL).  
-- Error analysis with **classification reports** and **confusion matrix** visualizations.
+- Fetch **latest movie** via `/movies/` API endpoint.  
+- Preprocess data (handle missing values).  
+- Train & Use **ML model** (`movie_model.pkl`) to predict **High** or **Low Revenue**.  
+- Log prediction results directly to MySQL database.  
+- Evaluate Performance with **classification report** (precision, recall, F1-score), **confusion matrix** for error analysis and **feature importance bar chart** to understand influential factors.
+- Visualize results using **scatter plot** and **correlation heatmap** to assess feature correlations
 
 ## Database Schema
 ### Tables
@@ -73,20 +74,20 @@ The system fetches the latest movie data, preprocesses it, and predicts whether 
 
 ## ML Model (Movie Revenue Prediction)
 1. **Data Preprocessing**  
-   - `movies.csv` cleaned (handled missing values).  
+   - `movies.csv` dataset cleaned (handled missing values in `Score`, `Metascore`, `Votes`, `Runtime` using mean imputation where needed).
    - Features used: `Score`, `Metascore`, `Votes`, `Runtime`.  
    - Target: `high_revenue` (1 if Revenue > 100, else 0).
 
 2. **Model Training**  
-   - RandomForestClassifier  
-   - Accuracy: `0.94%`  
-   - Saved as `movie_model.pkl`.
+   - Used `RandomForestClassifier` for binary classification (High/Low Revenue).
+   - Accuracy: `94%` on test data.
+   - Saved trained model as `movie_model.pkl`.
 
-3. **Prediction Script (Task 3)**  
-   - Fetch latest movie from API.  
-   - Preprocess features.  
-   - Predict with the ML model.  
-   - Log prediction via API or directly to DB.
+3. **Prediction & Logging Script**  
+   - Fetch latest movie again from API.  
+   - Preprocess extracted features/data to match the model’s input format.
+   - Predict revenue category (High/Low) using the trained model.
+   - Log predictions directly into the MySQL database via an API call `(PUT /movies/{movie_id})` to update the movie data, including the prediction, in the database.
 
 ## Contributions
 
